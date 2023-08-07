@@ -1,37 +1,30 @@
 <ng-template #content let-offcanvas>
 	<div class="offcanvas-header">
-		<h4 class="offcanvas-title" id="offcanvas-basic-title">Profile update</h4>
+		<h4 class="offcanvas-title" id="offcanvas-basic-title">{{selectedUser.name}}</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
 	</div>
 	<div class="offcanvas-body">
-		<form>
-			<div class="mb-3">
-				<label for="dateOfBirth">Date of birth</label>
-				<div class="input-group">
-					<input
-						id="dateOfBirth"
-						class="form-control"
-						placeholder="yyyy-mm-dd"
-						name="dp"
-						ngbDatepicker
-						#dp="ngbDatepicker"
-					/>
-					<button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp.toggle()" type="button"></button>
-				</div>
-			</div>
-		</form>	
-		<div class="text-end">
-			<button type="button" class="btn btn-outline-dark" (click)="offcanvas.close('Save click')">Save</button>
-		</div>
+		<h6>ID: {{selectedUser.id}}</h6>
+		<h6>IP: {{selectedUser.ip}}</h6>
+		<h6>Phone: {{selectedUser.phone}}</h6>
+		<h6>Location: {{coordinates.lat}},{{coordinates.lon}}</h6>
+		
+		<iframe class="e2e-iframe-untrusted-src" width="100%" height="100%" [src]="mapUrl.frame" style="border: 1px solid black"></iframe>	
+		<br/><small><a [href]="mapUrl.href">View Larger Map</a></small>
 	</div>
 </ng-template>
 
-<input type="text" (keydown.enter)="updateFields($event)" />
-<ul>
-	<div *ngFor="let item of users; index as i"><span (click)="open(i)" >{{item.name}}</span></div>
-</ul>
-
-<!--<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo offcanvas</button>-->
+<div class = "theBody" >
+	<h4>Users Library</h4>
+	<p>
+		Please search through our users here.
+		Feel free to select a user to see their details.
+	</p>
+	<input type="text" (keydown.enter)="updateFields($event)" />
+	<ul>
+		<div *ngFor="let item of users; index as i"><span (click)="open(content,i)" >{{item.name}}</span></div>
+	</ul>
+</div>
 
 <hr />
 
