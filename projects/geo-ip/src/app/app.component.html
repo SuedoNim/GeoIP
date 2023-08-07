@@ -1,4 +1,4 @@
-<ng-template #content let-offcanvas>
+<ng-template id="Side Panel" #content let-offcanvas>
 	<div class="offcanvas-header">
 		<h4 class="offcanvas-title" id="offcanvas-basic-title">{{selectedUser.name}}</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
@@ -14,7 +14,7 @@
 	</div>
 </ng-template>
 
-<div class = "theBody" >
+<div class = "theBody" id="Main Panel">
 	<h4>Users Library</h4>
 	<p>
 		Please search through our users here.
@@ -27,5 +27,3 @@
 </div>
 
 <hr />
-
-<pre>{{ closeResult }}</pre>
