@@ -19,16 +19,19 @@
 					<button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp.toggle()" type="button"></button>
 				</div>
 			</div>
-		</form>
+		</form>	
 		<div class="text-end">
 			<button type="button" class="btn btn-outline-dark" (click)="offcanvas.close('Save click')">Save</button>
 		</div>
 	</div>
 </ng-template>
 
-<ul id="usersList" ></ul>
+<input type="text" (keydown.enter)="updateFields($event)" />
+<ul>
+	<div *ngFor="let item of users; index as i"><span (click)="open(i)" >{{item.name}}</span></div>
+</ul>
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo offcanvas</button>
+<!--<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo offcanvas</button>-->
 
 <hr />
 
